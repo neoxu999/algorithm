@@ -1,3 +1,9 @@
+package sort;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
+
 /**
  * Created with IntelliJ IDEA.
  * User: neo
@@ -52,6 +58,31 @@ public class Sort {
 
 
     }
+
+    /****
+     *
+     * @return most common integer
+     */
+    public int getCommonInt(int[] sumArray){
+        int commonInt = 0;
+
+        AtomicReference<Map> hashMap = new AtomicReference<Map>();
+        hashMap.set(new HashMap());
+        for(int i=0;i<sumArray.length;i++) {
+            for (int j = 1; j < sumArray.length; j++) {
+                int sum = sumArray[i] + sumArray[j];
+                if (!hashMap.get().containsKey(sum)) {
+                    hashMap.get().put(sum, 0);
+                } else {
+                   int count = (int) hashMap.get().get(sum);
+                    hashMap.get().put(sum, hashMap.get().get(sum) + 1)    ;
+                }
+        }
+
+        }
+        return commonInt;
+        }
+
 
 
 }
